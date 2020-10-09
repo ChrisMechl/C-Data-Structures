@@ -23,7 +23,7 @@ void genNums(int quantity, int max, int min, FILE *fp){
         for(; i <= quantity; i++){
             int num = rand() % (dif + 1);
             num += min;
-            if(i % 100 == 0){
+            if(i % 10 == 0){
                 fprintf(fp, "%d\n", num);
             }
             else {
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]){
         quantity = atoi(argv[4]);
     }
     else{
-        fprintf(stderr, "Syntax:\n./numGen <outFileName> :will default min=0 max=100 quantity=100 or\n./numGen <outFile>  <min> <max> :will default quantity=100 or\n./numGen <outFile>  <min> <max> <quantity>\n");
+        fprintf(stderr, "Syntax:\n./numGen <outFile> :will default min=0 max=100 quantity=100 or\n./numGen <outFile>  <min> <max> :will default quantity=100 or\n./numGen <outFile>  <min> <max> <quantity>\n");
     }
 
     char* name = argv[1];

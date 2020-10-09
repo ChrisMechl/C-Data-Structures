@@ -81,6 +81,9 @@
 		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.c">
 			<Option target="InsertionSort"/>
 		</Unit>
+		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.h">
+			<Option target="InsertionSort"/>
+		</Unit>
 		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
