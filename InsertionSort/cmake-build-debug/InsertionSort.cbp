@@ -78,7 +78,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/main.c">
+		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.c">
 			<Option target="InsertionSort"/>
 		</Unit>
 		<Unit filename="/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/CMakeLists.txt">

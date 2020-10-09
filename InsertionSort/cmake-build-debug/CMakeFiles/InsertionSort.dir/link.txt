@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/InsertionSort.dir/main.c.o  -o InsertionSort 
+/usr/bin/cc -g   CMakeFiles/InsertionSort.dir/insertSort.c.o  -o InsertionSort 

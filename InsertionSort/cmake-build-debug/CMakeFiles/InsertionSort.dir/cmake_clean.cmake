@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/InsertionSort.dir/main.c.o"
+  "CMakeFiles/InsertionSort.dir/insertSort.c.o"
   "InsertionSort"
   "InsertionSort.pdb"
 )

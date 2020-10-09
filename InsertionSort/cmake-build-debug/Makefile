@@ -143,32 +143,32 @@ InsertionSort/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/build
 .PHONY : InsertionSort/fast
 
-main.o: main.c.o
+insertSort.o: insertSort.c.o
 
-.PHONY : main.o
+.PHONY : insertSort.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/main.c.o
-.PHONY : main.c.o
+insertSort.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/insertSort.c.o
+.PHONY : insertSort.c.o
 
-main.i: main.c.i
+insertSort.i: insertSort.c.i
 
-.PHONY : main.i
+.PHONY : insertSort.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/main.c.i
-.PHONY : main.c.i
+insertSort.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/insertSort.c.i
+.PHONY : insertSort.c.i
 
-main.s: main.c.s
+insertSort.s: insertSort.c.s
 
-.PHONY : main.s
+.PHONY : insertSort.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/main.c.s
-.PHONY : main.c.s
+insertSort.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/InsertionSort.dir/build.make CMakeFiles/InsertionSort.dir/insertSort.c.s
+.PHONY : insertSort.c.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... InsertionSort"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... insertSort.o"
+	@echo "... insertSort.i"
+	@echo "... insertSort.s"
 .PHONY : help
 
 

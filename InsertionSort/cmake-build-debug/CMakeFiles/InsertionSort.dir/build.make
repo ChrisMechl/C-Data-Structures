@@ -77,27 +77,27 @@ include CMakeFiles/InsertionSort.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/InsertionSort.dir/flags.make
 
-CMakeFiles/InsertionSort.dir/main.c.o: CMakeFiles/InsertionSort.dir/flags.make
-CMakeFiles/InsertionSort.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/InsertionSort.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/InsertionSort.dir/main.c.o   -c /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/main.c
+CMakeFiles/InsertionSort.dir/insertSort.c.o: CMakeFiles/InsertionSort.dir/flags.make
+CMakeFiles/InsertionSort.dir/insertSort.c.o: ../insertSort.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/InsertionSort.dir/insertSort.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/InsertionSort.dir/insertSort.c.o   -c /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.c
 
-CMakeFiles/InsertionSort.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/InsertionSort.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/main.c > CMakeFiles/InsertionSort.dir/main.c.i
+CMakeFiles/InsertionSort.dir/insertSort.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/InsertionSort.dir/insertSort.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.c > CMakeFiles/InsertionSort.dir/insertSort.c.i
 
-CMakeFiles/InsertionSort.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/InsertionSort.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/main.c -o CMakeFiles/InsertionSort.dir/main.c.s
+CMakeFiles/InsertionSort.dir/insertSort.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/InsertionSort.dir/insertSort.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/insertSort.c -o CMakeFiles/InsertionSort.dir/insertSort.c.s
 
 # Object files for target InsertionSort
 InsertionSort_OBJECTS = \
-"CMakeFiles/InsertionSort.dir/main.c.o"
+"CMakeFiles/InsertionSort.dir/insertSort.c.o"
 
 # External object files for target InsertionSort
 InsertionSort_EXTERNAL_OBJECTS =
 
-InsertionSort: CMakeFiles/InsertionSort.dir/main.c.o
+InsertionSort: CMakeFiles/InsertionSort.dir/insertSort.c.o
 InsertionSort: CMakeFiles/InsertionSort.dir/build.make
 InsertionSort: CMakeFiles/InsertionSort.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/christian/Documents/GitHub/C-Data-Structures/InsertionSort/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable InsertionSort"
