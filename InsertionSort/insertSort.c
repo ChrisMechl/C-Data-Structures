@@ -32,7 +32,7 @@ int getSize(FILE *fp){
 }
 
 struct Link* makeFirstLink(int val){
-    struct Link *link = malloc(sizeof(struct Link*));
+    struct Link *link = malloc(sizeof(struct Link));
     link->next = NULL;
     link->val = val;
 
@@ -40,7 +40,7 @@ struct Link* makeFirstLink(int val){
 }
 
 struct Link* makeLink(struct Link *cur, int val){
-    struct Link *link = malloc(sizeof(struct Link*));
+    struct Link *link = malloc(sizeof(struct Link));
 
     cur->next = link;
     link->next = NULL;
@@ -49,9 +49,19 @@ struct Link* makeLink(struct Link *cur, int val){
     return link;
 }
 
-struct Link* buildList(int size, FILE *fp){
+void deleteList(struct Link *list){
+    struct Link *cur = list;
+    while(list->next != NULL){
+        cur = list->next;
+        free(list);
+        list = cur;
+    }
+    free(cur);
+}
+
+struct Link* buildList(FILE *fp){
     char buf[MAXLINE], num[MAXSIZE];
-    struct Link *cur = NULL;
+    struct Link *cur = (void*)NULL;
     struct Link *head;
 
     fgets(buf, MAXLINE, fp);
@@ -99,5 +109,8 @@ int main(int argc, char *argv[]){
 
     int size = getSize(fp);
 
-    struct Link *list = buildList(size, fp);
+    struct Link *list = buildList(fp);
+
+    deleteList(list);
+    fclose(fp);
 }
