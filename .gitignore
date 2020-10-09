@@ -51,5 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Project Specific
 .idea/
 nums.txt
