@@ -16,6 +16,8 @@ void genNums(int quantity, int max, int min, FILE *fp){
     int i = 1;
     srand(time(NULL));
 
+    fprintf(fp, "size: %d\n", quantity);
+
     if(min < 0){
         int dif = max - min;
         for(; i <= quantity; i++){
