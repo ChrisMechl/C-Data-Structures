@@ -122,9 +122,27 @@ struct Link* buildList(FILE *fp){
     return head;
 }
 
+void writeList(FILE *fp, struct Link *list, int size){
+    fprintf(fp, "size: %d\n", size);
+    //struct Link *cur = list;
+
+    int i = 1;
+    while(list->next != NULL){
+        if(i % 100 == 0){
+            fprintf(fp, "%d\n", list->val);
+        }
+        else{
+            fprintf(fp, "%d ", list->val);
+        }
+        i++;
+        list = list->next;
+    }
+}
+
 int main(int argc, char *argv[]){
-    if(argc != 2){
-        fprintf(stderr, "Syntax: ./insertSort <input file>\n");
+    if(argc != 3){
+        fprintf(stderr, "Syntax: ./insertSort <input file> <output file>\n");
+        return EXIT_FAILURE;
     }
 
     FILE* fp = fopen(argv[1], "r");
@@ -137,6 +155,13 @@ int main(int argc, char *argv[]){
 
     struct Link *list = buildList(fp);
 
-    deleteList(list);
     fclose(fp);
+    fp = fopen(argv[2], "w");
+
+    writeList(fp, list, size);
+    fclose(fp);
+
+    deleteList(list);
+
+    return EXIT_SUCCESS;
 }
