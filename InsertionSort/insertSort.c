@@ -32,21 +32,48 @@ int getSize(FILE *fp){
 }
 
 struct Link* makeFirstLink(int val){
-    struct Link *link = malloc(sizeof(struct Link));
-    link->next = NULL;
-    link->val = val;
+    struct Link *head = malloc(sizeof(struct Link));
+    head->next = NULL;
+    head->val = val;
 
-    return link;
+    return head;
 }
 
-struct Link* makeLink(struct Link *cur, int val){
+struct Link* makeLink(struct Link *head, int val){
     struct Link *link = malloc(sizeof(struct Link));
-
-    cur->next = link;
-    link->next = NULL;
     link->val = val;
+    struct Link *last = head;
+    struct Link *temp;
 
-    return link;
+    while(last->next != NULL){
+        if(last->val > val){
+            temp = last;
+            last = last->next;
+        }
+        else{
+            if(last == head){
+                link->next = head;
+                return link;
+            }
+            temp->next = link;
+            link->next = last;
+            return head;
+        }
+    }
+    if(last->val > val){
+        last->next = link;
+        link->next = NULL;
+        return head;
+    }
+    else{
+        if(last == head){
+            link->next = head;
+            return link;
+        }
+        link->next = last;
+        temp->next = link;
+        return head;
+    }
 }
 
 void deleteList(struct Link *list){
@@ -61,8 +88,7 @@ void deleteList(struct Link *list){
 
 struct Link* buildList(FILE *fp){
     char buf[MAXLINE], num[MAXSIZE];
-    struct Link *cur = (void*)NULL;
-    struct Link *head;
+    struct Link *head = NULL;
 
     fgets(buf, MAXLINE, fp);
 
@@ -75,17 +101,17 @@ struct Link* buildList(FILE *fp){
                 i++;
             }
             start = i;
-            while (buf[i] != ' ' && buf[i] != '\n') {
+            while(buf[i] != ' ' && buf[i] != '\n'){
                 num[i - start] = buf[i];
                 i++;
             }
             num[i - start] = 0;
             val = atoi(num);
-            if (cur == NULL) {
-                cur = makeFirstLink(val);
-                head = cur;
-            } else {
-                cur = makeLink(cur, val);
+            if(head == NULL){
+                head = makeFirstLink(val);
+            }
+            else{
+                head = makeLink(head, val);
             }
         }
         if(!fgets(buf, MAXLINE, fp)){
