@@ -124,10 +124,11 @@ struct Link* buildList(FILE *fp){
 
 void writeList(FILE *fp, struct Link *list, int size){
     fprintf(fp, "size: %d\n", size);
+    //struct Link *cur = list;
 
     int i = 1;
     while(list->next != NULL){
-        if(i % 10 == 0){
+        if(i % 100 == 0){
             fprintf(fp, "%d\n", list->val);
         }
         else{
