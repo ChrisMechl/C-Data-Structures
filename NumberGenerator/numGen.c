@@ -23,7 +23,10 @@ void genNums(int quantity, int max, int min, FILE *fp){
         for(; i <= quantity; i++){
             int num = rand() % (dif + 1);
             num += min;
-            if(i % 10 == 0){
+            if(i == 0){
+                fprintf(fp, "%d ", num);
+            }
+            else if(i % 10 == 0){
                 fprintf(fp, "%d\n", num);
             }
             else {
@@ -34,7 +37,10 @@ void genNums(int quantity, int max, int min, FILE *fp){
     else{
         for(; i <= quantity; i++){
             int num = rand() % (max - min + 1) + min;
-            if(i % 100 == 0){
+            if(i == 0){
+                fprintf(fp, "%d ", num);
+            }
+            else if(i % 100 == 0){
                 fprintf(fp, "%d\n", num);
             }
             else {

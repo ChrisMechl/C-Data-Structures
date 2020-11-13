@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-#define MAXLINE 20
+#define MAXLINE 1024
 
 int getSize(FILE *fp){
     char buf[MAXLINE];
@@ -40,56 +41,53 @@ void buildList(FILE *fp, int* nums){
     }
 
     while(1){
-        if(i == MAXLINE - 1){
+        if(buf[i] != ' ' && i < MAXLINE - 1){
             if(buf[i] == '\n'){
-                if(fgets(buf, MAXLINE, fp) == NULL) {
-                    nums[j] = num;
+                nums[j] = num;
+                num = 0;
+                i = 0;
+                j++;
+                if(fgets(buf, MAXLINE, fp) == NULL){
                     return;
                 }
-                nums[j] = num;
+            }
+            else if(buf[i] == '-'){
+                i++;
+                if(i == MAXLINE - 1){
+                    fgets(buf, MAXLINE, fp);
+                    i = 0;
+                }
+                num *= 10;
+                num += buf[i] - 48;
+                num *= -1;
+                i++;
             }
             else{
-                if(fgets(buf, MAXLINE, fp) == NULL){
-                    nums[j] = num;
-                    return;
+                num *= 10;
+                if(num < 0){
+                    num -= buf[i] - 48;
                 }
+                else {
+                    num += buf[i] - 48;
+                }
+                i++;
             }
-            i = 0;
         }
-        if(buf[i] == ' '){
+        else if(buf[i] == ' '){
             nums[j] = num;
             num = 0;
             j++;
             i++;
         }
-        else if(buf[i] == '-'){
-
-        }
-        if(i != MAXLINE - 1) {
-            num *= 10;
-            num += buf[i] - 48;
-            i++;
+        else{
+            if(fgets(buf, MAXLINE, fp) == NULL){
+                nums[j] = num;
+                return;
+            }
+            i = 0;
         }
     }
 }
-
-//int search(struct Link *head, int num, int size){
-//    struct Link *cur = head;
-//    int loc;
-//    int mid = size / 2;
-//    int i = 1;
-//    for(; i < mid; i++){
-//        cur = cur->next;
-//    }
-//    if(cur->val > num){
-//        loc = search(cur, num, mid);
-//    }
-//    else{
-//
-//    }
-//    cur->next = NULL;
-//    return 0;
-//}
 
 int main(int argc, char* argv[]){
     if(argc != 3){
@@ -102,6 +100,7 @@ int main(int argc, char* argv[]){
     int size = getSize(fp);
 
     int *nums = malloc(sizeof(int) * size);
+    bzero(nums, size);
 
     buildList(fp, nums);
 
