@@ -1,35 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "insertSort.h"
+#include "strctalg.h"
 
-#define MAXSIZE 100
-#define MAXLINE 1200
-
-int getSize(FILE *fp){
-    char buf[MAXSIZE];
-
-    fgets(buf, MAXSIZE, fp);
-
-    if(buf[0] != 's' && buf[1] != 'i' && buf[2] != 'z' && buf[3] != 'e' && buf[4] != ':' && buf[5] != ' '){
-        fprintf(stderr, "Error reading input file: Does not start with \"size: \"");
-        return 0;
-    }
-
-    int i = 6;
-    int size = 0;
-    while(buf[i] != '\n'){
-        if(size == 0){
-            size = buf[i] - 48;
-        }
-        else{
-            size *= 10;
-            size += buf[i] - 48;
-        }
-        i++;
-    }
-
-    return size;
-}
+#define MAXLINE 1024
+#define MAXSIZE 256
 
 struct Link* makeFirstLink(int val){
     struct Link *head = malloc(sizeof(struct Link));
@@ -43,37 +17,15 @@ struct Link* makeLink(struct Link *head, int val){
     struct Link *link = malloc(sizeof(struct Link));
     link->val = val;
     struct Link *last = head;
-    struct Link *temp;
 
     while(last->next != NULL){
-        if(last->val > val){
-            temp = last;
-            last = last->next;
-        }
-        else{
-            if(last == head){
-                link->next = head;
-                return link;
-            }
-            temp->next = link;
-            link->next = last;
-            return head;
-        }
+        last = last->next;
     }
-    if(last->val > val){
-        last->next = link;
-        link->next = NULL;
-        return head;
-    }
-    else{
-        if(last == head){
-            link->next = head;
-            return link;
-        }
-        link->next = last;
-        temp->next = link;
-        return head;
-    }
+
+    last->next = link;
+    link->next = NULL;
+
+    return head;
 }
 
 void deleteList(struct Link *list){
@@ -86,7 +38,37 @@ void deleteList(struct Link *list){
     free(cur);
 }
 
-struct Link* buildList(FILE *fp){
+void writeListToFIle(FILE *fp, struct Link *list, int size){
+    fprintf(fp, "size: %d\n", size);
+
+    int i = 1;
+    while(list->next != NULL){
+        if(i % 100 == 0){
+            fprintf(fp, "%d\n", list->val);
+        }
+        else{
+            fprintf(fp, "%d ", list->val);
+        }
+        i++;
+        list = list->next;
+    }
+}
+
+void printList(struct Link *list){
+    int i = 1;
+    while(list->next != NULL) {
+        if(i % 10 == 0){
+            printf("%d\n", list->val);
+        }
+        else{
+            printf("%d ", list->val);
+        }
+        list = list->next;
+        i++;
+    }
+}
+
+struct Link* buildListFromFile(FILE *fp){
     char buf[MAXLINE], num[MAXSIZE];
     struct Link *head = NULL;
 
@@ -120,48 +102,4 @@ struct Link* buildList(FILE *fp){
         i = 0;
     }
     return head;
-}
-
-void writeList(FILE *fp, struct Link *list, int size){
-    fprintf(fp, "size: %d\n", size);
-    //struct Link *cur = list;
-
-    int i = 1;
-    while(list->next != NULL){
-        if(i % 100 == 0){
-            fprintf(fp, "%d\n", list->val);
-        }
-        else{
-            fprintf(fp, "%d ", list->val);
-        }
-        i++;
-        list = list->next;
-    }
-}
-
-int main(int argc, char *argv[]){
-    if(argc != 3){
-        fprintf(stderr, "Syntax: ./insertSort <input file> <output file>\n");
-        return EXIT_FAILURE;
-    }
-
-    FILE* fp = fopen(argv[1], "r");
-    if(fp == NULL){
-        fprintf(stderr, "Failed to open file");
-        return EXIT_FAILURE;
-    }
-
-    int size = getSize(fp);
-
-    struct Link *list = buildList(fp);
-
-    fclose(fp);
-    fp = fopen(argv[2], "w");
-
-    writeList(fp, list, size);
-    fclose(fp);
-
-    deleteList(list);
-
-    return EXIT_SUCCESS;
 }
