@@ -32,7 +32,7 @@ int getSize(FILE *fp){
 void buildList(FILE *fp, int* nums){
     char buf[MAXLINE];
 
-    int i;
+    int i = 0;
     int j = 0;
     int num = 0;
 
