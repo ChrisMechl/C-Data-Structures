@@ -95,13 +95,13 @@ struct Link* buildList(FILE *fp){
     int i = 0;
     int start;
     int val;
-    while(buf[i] != 4){
-        while(buf[i] != '\n'){
+    while(buf[i] != 0){
+        while(buf[i] != '\n' && buf[i] != 0){
             if(buf[i] == ' '){
                 i++;
             }
             start = i;
-            while(buf[i] != ' ' && buf[i] != '\n'){
+            while(buf[i] != ' ' && buf[i] != '\n' && buf[i] != 0){
                 num[i - start] = buf[i];
                 i++;
             }
@@ -126,7 +126,7 @@ void writeList(FILE *fp, struct Link *list, int size){
     fprintf(fp, "size: %d\n", size);
 
     int i = 1;
-    while(list->next != NULL){
+    while(list != NULL){
         if(i % 10 == 0){
             fprintf(fp, "%d\n", list->val);
         }
