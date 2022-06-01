@@ -1,3 +1,0 @@
-/home/christian/Documents/GitHub/C-Data-Structures/NumberGenerator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/christian/Documents/GitHub/C-Data-Structures/NumberGenerator/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/christian/Documents/GitHub/C-Data-Structures/NumberGenerator/cmake-build-debug/CMakeFiles/NumberGenerator.dir
